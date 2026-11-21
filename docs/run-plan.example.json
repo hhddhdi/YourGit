@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "stack": {
+    "language": "node",
+    "framework": "Vite",
+    "packageManager": "npm",
+    "confidence": 0.95,
+    "evidence": ["package.json", "package-lock.json", "framework: Vite"]
+  },
+  "workdir": ".",
+  "install": [["npm", "ci"]],
+  "start": [["npm", "run", "dev"]],
+  "ports": [
+    {
+      "container": 5173,
+      "protocol": "http",
+      "healthPath": "/"
+    }
+  ],
+  "env": [
+    {
+      "key": "VITE_API_URL",
+      "required": true,
+      "secret": false,
+      "description": "URL da API usada pelo frontend"
+    }
+  ],
+  "warnings": [
+    "O projeto executa scripts de ciclo de vida do npm: postinstall.",
+    "Execução nativa no MVP: o código roda com as permissões do usuário."
+  ],
+  "planHash": "sha256:3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a"
+}

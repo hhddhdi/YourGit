@@ -1,0 +1,24 @@
+[package]
+name = "yourgit-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Núcleo do YourGit: fontes, inspeção, planos, armazenamento e execução."
+
+[dependencies]
+chrono = { version = "0.4", features = ["serde"] }
+dirs = "6"
+hex = "0.4"
+percent-encoding = "2"
+regex = "1"
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "rustls-tls"] }
+rusqlite = { version = "0.32", features = ["bundled"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+url = "2"
+uuid = { version = "1", features = ["v4"] }
+zip = { version = "2", default-features = false, features = ["deflate"] }
+
+[dev-dependencies]
+tempfile = "3"

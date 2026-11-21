@@ -1,0 +1,93 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-11-20T00:00:00Z",
+  "channels": {
+    "official": {
+      "signed": true,
+      "entries": [
+        {
+          "id": "exemplo-hello-vite",
+          "channel": "official",
+          "name": "Hello Vite",
+          "repo": "https://github.com/exemplo/hello-vite",
+          "ref": "3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a",
+          "subdir": ".",
+          "description": "Exemplo ilustrativo de app Vite com React.",
+          "category": "web",
+          "tags": ["node", "vite", "react"],
+          "license": "MIT",
+          "icon": "https://raw.githubusercontent.com/exemplo/hello-vite/main/icon.png",
+          "verified": true,
+          "requirements": {
+            "docker": true,
+            "memory_mb": 2048,
+            "disk_mb": 500
+          },
+          "recipe": {
+            "schema_version": 1,
+            "workdir": ".",
+            "install": [["npm", "ci"]],
+            "start": [["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "5173"]],
+            "ports": [
+              {
+                "container": 5173,
+                "protocol": "http",
+                "health_path": "/"
+              }
+            ],
+            "env": [
+              {
+                "key": "VITE_API_URL",
+                "required": false,
+                "secret": false
+              }
+            ],
+            "warnings": [
+              "Executa scripts de pós-instalação do npm."
+            ]
+          }
+        }
+      ]
+    },
+    "community": {
+      "signed": false,
+      "entries": [
+        {
+          "id": "comunidade-exemplo-rust",
+          "channel": "community",
+          "name": "Exemplo Axum",
+          "repo": "https://github.com/exemplo/hello-axum",
+          "ref": "0123456789abcdef0123456789abcdef01234567",
+          "subdir": ".",
+          "description": "Exemplo ilustrativo de API Rust com Axum, enviado pela comunidade.",
+          "category": "backend",
+          "tags": ["rust", "axum"],
+          "license": "MIT OR Apache-2.0",
+          "verified": false,
+          "requirements": {
+            "docker": true,
+            "memory_mb": 2048,
+            "disk_mb": 800
+          },
+          "recipe": {
+            "schema_version": 1,
+            "workdir": ".",
+            "install": [["cargo", "fetch"]],
+            "start": [["cargo", "run"]],
+            "ports": [
+              {
+                "container": 8080,
+                "protocol": "http",
+                "health_path": "/"
+              }
+            ],
+            "env": [],
+            "warnings": [
+              "Receita da comunidade: revise os comandos antes de executar."
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
